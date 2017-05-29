@@ -1,9 +1,11 @@
 package com.bignerdranch.android.photogallery;
 
 import android.app.Activity;
+import android.app.Notification;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.support.v4.app.NotificationManagerCompat;
 import android.util.Log;
 
 /**
@@ -21,6 +23,9 @@ public class NotificationReceiver extends BroadcastReceiver {
             return;
         }
 
-
+        int requestCode = intent.getIntExtra(PollService.REQUET_CODE, 0);
+        Notification notification = (Notification) intent.getParcelableExtra(PollService.NOTIFICATION);
+        NotificationManagerCompat notificationManager = NotificationManagerCompat.from(context);
+        notificationManager.notify(requestCode, notification);
     }
 }
