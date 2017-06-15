@@ -123,7 +123,7 @@ public class PhotoGalleryFragment extends VisibleFragment {
         });
 
         MenuItem toggleItem = menu.findItem(R.id.menu_item_toggle_polling);
-        if (PollService.isServiceAlaramOn(getActivity())) {
+        if (PollService.isServiceAlarmOn(getActivity())) {
             toggleItem.setTitle(R.string.stop_polling);
         } else {
             toggleItem.setTitle(R.string.start_polling);
@@ -138,7 +138,7 @@ public class PhotoGalleryFragment extends VisibleFragment {
                 updateItems();
                 return true;
             case  R.id.menu_item_toggle_polling:
-                boolean shouldStartAlarm = !PollService.isServiceAlaramOn(getActivity());
+                boolean shouldStartAlarm = !PollService.isServiceAlarmOn(getActivity());
                 PollService.setServiceAlarm(getActivity(), shouldStartAlarm);
                 getActivity().invalidateOptionsMenu();
                 return true;

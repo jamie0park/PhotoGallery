@@ -77,13 +77,13 @@ public class PollService extends IntentService {
 //            notificationManager.notify(0, notification);
 //            sendBroadcast(new Intent(ACTION_SHOW_NOTIFICATION), PERM_PRIVATE);
 
-            showBackgroudNotivication(0, notification);
+            showBackgroundNotification(0, notification);
         }
 
         QueryPreferences.setLastResultId(this, resultId);
     }
 
-    private void showBackgroudNotivication(int requestCode, Notification notification) {
+    private void showBackgroundNotification(int requestCode, Notification notification) {
         Intent i = new Intent(ACTION_SHOW_NOTIFICATION);
         i.putExtra(REQUET_CODE, requestCode);
         i.putExtra(NOTIFICATION, notification);
@@ -113,10 +113,10 @@ public class PollService extends IntentService {
             alarmManager.cancel(pi);
             pi.cancel();
         }
-        QueryPreferences.setIsAlarmON(context, isOn);
+        QueryPreferences.setIsAlarmOn(context, isOn);
     }
 
-    public static boolean isServiceAlaramOn(Context context) {
+    public static boolean isServiceAlarmOn(Context context) {
         Intent i = PollService.newIntent(context);
         PendingIntent pi = PendingIntent.getService(context, 0, i, PendingIntent.FLAG_NO_CREATE);
         return pi != null;
